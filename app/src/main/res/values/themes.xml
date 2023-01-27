@@ -15,10 +15,10 @@
     </style>
 
     <style name="MyTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
-        <item name="colorPrimary">@color/white</item>
+        <item name="colorPrimary">@color/pastelCream</item>
         <item name="android:fontFamily">@font/amaranth</item>
         <item name="colorOnPrimary">@color/white</item>
         <item name="colorPrimaryVariant">@color/pastelCream</item>
-        <item name="android:statusBarColor">@color/pastelCream</item>
+        <item name="android:statusBarColor">@color/white</item>
     </style>
 </resources>
