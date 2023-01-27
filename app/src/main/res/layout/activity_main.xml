@@ -15,6 +15,18 @@
             android:id="@+id/c_toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed" />
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/back_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/ThemeOverlay.AppCompat"
+                android:text="Back"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:textAllCaps="false" />
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
