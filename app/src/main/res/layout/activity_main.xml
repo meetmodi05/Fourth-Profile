@@ -19,12 +19,14 @@
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/back_tv"
+                style="@style/ThemeOverlay.AppCompat"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="@style/ThemeOverlay.AppCompat"
+                android:drawableStart="@drawable/outline_arrow_back_ios_24"
+                android:drawableEnd="@drawable/outline_shopping_cart_24"
                 android:text="Back"
-                android:textSize="18sp"
-                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="20sp"
                 app:textAllCaps="false" />
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
