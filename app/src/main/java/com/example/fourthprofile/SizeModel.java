@@ -1,9 +1,9 @@
 package com.example.fourthprofile;
 
-public class size_model {
+public class SizeModel {
     private int size;
 
-    public size_model(int size) {
+    public SizeModel(int size) {
         this.size = size;
     }
 
