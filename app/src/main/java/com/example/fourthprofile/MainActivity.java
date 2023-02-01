@@ -43,15 +43,5 @@ public class MainActivity extends AppCompatActivity {
         rv.setLayoutManager(horizontalLinearLayoutManager);
         rvAdapter = new RecyclerViewAdapter(this, size_modelArrayList);
         rv.setAdapter(rvAdapter);
-        View v = LayoutInflater.from(getApplicationContext()).inflate(size_layout, null, false);
-        View vs = v.findViewById(R.id.sizeTV);
-        v.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (vs.isClickable()) {
-                    vs.setBackgroundColor(getColor(R.color.black));
-                }
-            }
-        });
     }
 }

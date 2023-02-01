@@ -1,8 +1,12 @@
 package com.example.fourthprofile;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
@@ -13,59 +17,56 @@ import com.google.android.material.textview.MaterialTextView;
 import java.util.ArrayList;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
-    private ArrayList<SizeModel> size_modelArrayList;
+    int row_index = -1;
+    private final ArrayList<SizeModel> modellist;
 
-    public RecyclerViewAdapter(MainActivity mainActivity, ArrayList<SizeModel> size_modelArrayList) {
-        this.size_modelArrayList = size_modelArrayList;
-    }
-
-    public void SetSizes(ArrayList<SizeModel> size_modelArrayList) {
-        this.size_modelArrayList = new ArrayList<>();
-        this.size_modelArrayList = size_modelArrayList;
-        notifyDataSetChanged();
+    public RecyclerViewAdapter(MainActivity mainActivity, ArrayList<SizeModel> modellist) {
+        this.modellist = modellist;
     }
 
     @NonNull
     @Override
     public RecyclerViewAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.size_layout, parent, false);
-        View v1 = v.findViewById(R.id.sizeTV);
-//        v1.setOnClickListener(new View.OnClickListener() {
-//            @SuppressLint("ResourceAsColor")
-//            @Override
-//            public void onClick(View view) {
-//                if (v1.isClickable()) {
-//                    v1.setBackgroundColor(R.color.black);
-//                }
-//            }
-//        });
         return new ViewHolder(v);
     }
 
+    @SuppressLint("ResourceAsColor")
     @Override
-    public void onBindViewHolder(@NonNull RecyclerViewAdapter.ViewHolder holder, int position) {
-//        SizeModel sm = size_modelArrayList.get(position);
-//        holder.sizetv.setText(Integer.toString(size_modelArrayList.getSize()));
-        holder.binddata(size_modelArrayList.get(position));
+    public void onBindViewHolder(@NonNull RecyclerViewAdapter.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
+        SizeModel model = modellist.get(position);
+        holder.textview.setText(Integer.toString(model.getSize()));
+        holder.textview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                row_index = position;
+                notifyDataSetChanged();
+            }
+        });
+        if (row_index == position) {
+            holder.textview.setSelected(true);
+        } else {
+            holder.textview.setSelected(false);
+//            holder.textview.setTextColor(Color.BLACK);
+
+        }
     }
 
     @Override
     public int getItemCount() {
-        return size_modelArrayList.size();
+        return modellist.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
-        private MaterialTextView sizetv;
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+        public MaterialTextView textview;
+        public LinearLayout ll1;
+//        public CardView cv;
 
         public ViewHolder(View v) {
             super(v);
-            sizetv = v.findViewById(R.id.sizeTV);
-        }
-
-        void binddata(final SizeModel smodel) {
-            int checkPostion = 0;
-            if (checkPostion == -1) {
-            }
+            textview = v.findViewById(R.id.sizeTV);
+//            cv = v.findViewById(R.id.cv1);
+            ll1 = v.findViewById(R.id.layout);
         }
     }
 }
